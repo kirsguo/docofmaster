@@ -1,0 +1,63 @@
+<HTML>
+<SCRIPT LANGUAGE="JavaScript">
+/*
+ * Storing this varible on the navigator object makes it truely global on NN4,
+ * but is no help on NN3, so we need the page global variable in NN3 which is
+ * the best we can do.  
+ */
+
+var search_win = navigator._searchWin;
+
+function loadApplet() {
+    if(navigator.appName == "Netscape") {
+	if(search_win == null || search_win.closed) {
+	    search_win = window.open("appletn.htm", "_appletWindow", "width=390,height=300,resizable=0,status=0,menubar=0,scrollbar=0");
+	    navigator._searchWin = search_win;
+	} 
+	search_win.opener = top;
+	search_win.focus();
+    } else if(top.loadApplet != null) {
+	top.loadApplet();
+    }
+}
+</SCRIPT>
+
+<BODY BGCOLOR="#336699" LEFTMARGIN="1" TOPMARGIN="1">
+
+<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+
+
+<tr>
+<td colspan="2" align="right"><A HREF="javascript:loadApplet()" TARGET="LEFT"><IMG SRC="search-1.gif" tppabs="http://ultra/development/DesignPatterns/lowres/gifsb/search.gif" BORDER="0"></A></td>
+</tr>
+
+<tr>
+<td><img src="clear-1.gif" tppabs="http://ultra/development/DesignPatterns/lowres/gifsb/clear.gif" width="1" height="20"></td>
+<td><img src="clear-1.gif" tppabs="http://ultra/development/DesignPatterns/lowres/gifsb/clear.gif" width="10" height="1"></td>
+</tr>
+
+<tr>
+<td align="right"><img src="patlefta-1.gif" tppabs="http://ultra/development/DesignPatterns/lowres/gifsb/patlefta.gif" border="0" ismap usemap="#patlefta"></td>
+<td></td>
+</tr>
+
+</TABLE>
+
+<map name="patlefta">
+<area shape="rect" coords="0,0,80,13" href="pat5h-1.htm#intent" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#intent" target="TEXT">
+<area shape="rect" coords="0,17,80,33" href="pat5h-1.htm#alsoknownas" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#alsoknownas" target="TEXT">
+<area shape="rect" coords="0,42,80,56" href="pat5h-1.htm#motivation" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#motivation" target="TEXT">
+<area shape="rect" coords="-2,61,79,77" href="pat5h-1.htm#applicability" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#applicability" target="TEXT">
+<area shape="rect" coords="0,83,80,98" href="pat5h-1.htm#structure" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#structure" target="TEXT">
+<area shape="rect" coords="0,106,81,116" href="pat5h-1.htm#participants" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#participants" target="TEXT">
+<area shape="rect" coords="0,124,81,138" href="pat5h-1.htm#collaborations" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#collaborations" target="TEXT">
+<area shape="rect" coords="1,147,81,160" href="pat5h-1.htm#consequences" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#consequences" target="TEXT">
+<area shape="rect" coords="0,165,80,180" href="pat5h-1.htm#implementation" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#implementation" target="TEXT">
+<area shape="rect" coords="2,185,82,202" href="pat5h-1.htm#samplecode" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#samplecode" target="TEXT">
+<area shape="rect" coords="3,209,83,222" href="pat5h-1.htm#knownuses" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#knownuses" target="TEXT">
+<area shape="rect" coords="1,228,81,245" href="pat5h-1.htm#relatedpatterns" tppabs="http://ultra/development/DesignPatterns/lowres/pat5h.htm#relatedpatterns" target="TEXT">
+<area shape="default" nohref>
+</map>
+</HTML>
+
+                                                                                                    

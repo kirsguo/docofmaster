@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+
+<!--
+  You must have a JavaScript1.1 browser to check for the existence of java.
+  An example of a browser that doesn't support 1.1 is IE3.
+  
+  This convuluted approach works on IE3&4 and NN3&4
+-->
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+   var has_java = true;
+// -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.1">
+<!--
+if (!navigator.javaEnabled()) {
+   has_java = false;
+   document.open();
+   document.write('<HTML><HEAD><TITLE>Warning, Java is not enabled.</TITLE></HEAD>');
+   document.write('<H1>Warning</H1>');
+   document.write('<P>Your browser is currently running with Java disabled.  In order to view the Design Patterns CD-ROM, your browser must have Java enabled.  Please check your configuration or update your browser. </P>');
+   document.write('<p><a href="http://home.netscape.com/download/index.html" ><img width="88" height="32" src="hires/nowanim.gif" alt="Netscape Navigator" border="0" align="center"></a> The Design Patterns CD Works <STRONG>best</STRONG> with Netscape Navigator.</p>');
+   document.write('<p><a href="http://www.microsoft.com/ie/default.asp" ><img width="88" height="31" src="hires/ieanim.gif" alt="Microsoft Internet Explorer" border="0" align="center"></a> The Design Patterns CD also works with Internet Explorer.</p><HR>');
+   document.close();
+}
+// -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    /* You'd think this should be a function, but the mac version of IE3
+     * can't deal with that, boy is it's JavaScript implementation bad.
+     */
+    
+    var is_mac_ie3 = false;
+    var is_mac_ie4 = false;
+    if(navigator.appName == "Microsoft Internet Explorer") {
+        version = navigator.appVersion;
+        idx = version.indexOf('M');
+        if (idx >= 0) {
+            version = version.substring(idx, version.length);
+    	    mac_str = version.substring(0, 9);
+    	    if (mac_str == "Macintosh") {
+    	       is_mac_ie3 = true;
+    	    }
+    	}
+
+	if (!is_mac_ie3) {
+	    version = navigator.appVersion;
+            idx = version.indexOf(';');
+            if (idx >= 0) {
+                start = idx + 1;
+	        version = version.substring(start, version.length);
+	        idx = version.indexOf(';');
+                if (idx >= 0) {
+                    start = idx + 2;
+                    var mac = "Macintosh";
+                    var plat = version.substring(start, start + mac.length)
+                    if (plat == mac) {
+                        is_mac_ie4 = true;
+		    }
+                }
+	    }
+        }
+
+    }
+    
+    if (is_mac_ie3 || is_mac_ie4)
+        top.location.replace("hires/macie.htm");
+    else if (has_java)
+        top.location.replace("hires/index.htm");
+// -->
+</SCRIPT>
+
+<NOSCRIPT>
+<TITLE> Warning, JavaScript is not enabled.</TITLE>
+</HEAD>
+<BODY>
+
+<NOSCRIPT>
+<H1>Warning</H1>
+
+<P>Your browser is currently running with JavaScript disabled.  In
+order to view the Design Patterns CD-ROM, your browser must have JavaScript
+enabled.  Please check your configuration or update your browser. </P>
+
+<p><a href="javascript:if(confirm('http://home.netscape.com/download/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://home.netscape.com/download/index.html'" tppabs="http://home.netscape.com/download/index.html" >
+<img width="88" height="32" src="nowanim.gif" tppabs="http://ultra/development/DesignPatterns/hires/nowanim.gif" alt="Netscape Communicator" border="0" align="center"></a> The Design Patterns CD Works <STRONG>best</STRONG> with Netscape Navigator.</p>
+<p><a href="javascript:if(confirm('http://www.microsoft.com/ie/default.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/ie/default.asp'" tppabs="http://www.microsoft.com/ie/default.asp" >
+<img width="88" height="31" src="ieanim.gif" tppabs="http://ultra/development/DesignPatterns/hires/ieanim.gif" alt="Microsoft Internet Explorer" border="0" align="center"></a> The Design Patterns CD also works with Internet Explorer.</p>
+
+<HR>
+</NOSCRIPT>
+</BODY>
+</HTML>
+
+
+                                                                                                    

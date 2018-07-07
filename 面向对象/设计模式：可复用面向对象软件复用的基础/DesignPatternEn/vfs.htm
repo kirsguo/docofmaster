@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+/*
+	this script parses the search portion of the URL
+	and builds a frameset based on parameters it finds
+	there
+*/
+var ss=self.location.search ;
+var ss=ss.substring(1) ;
+var dstart=ss.lastIndexOf("doc=");
+var fstart=ss.lastIndexOf("fid=");
+var hstart=ss.lastIndexOf("hid=");
+var did=ss.substring(dstart+4,fstart-1) ;
+if ( hstart > -1 ) {
+	var fid=ss.substring(fstart+4,hstart-1) ;
+	var hash='#'+ss.substring(hstart+4) ;
+} else {
+	var fid=ss.substring(fstart+4) ;
+	var hash='' ;
+}
+
+if ( fid=='' ) {
+	alert("Invalid file identifier \""+fid+"\"! ("+ss+")") ; }
+else if ( did=='' ) {
+	alert("Invalid document identifier \""+did+"\"!") ; }
+
+var sname=did.substring(0, 4);
+
+var left='left'+fid+'.htm';
+var banner='banner'+fid+'.htm';
+var bot='bot'+fid+'.htm';
+var title=did;
+
+var left;
+
+if (did == "disc4.htm") {
+    left='leftstrc.htm'
+} else if (did == "disc5.htm") {
+    left='leftbeh.htm'
+} else {
+    left='left'+fid+'.htm';
+}
+
+var banner;
+if ((did == "chap3-0.htm") || (did == "chap4-0.htm") || (did == "chap5-0.htm")){
+    banner='banner'+fid+'n.htm';
+} else {
+    banner='banner'+fid+'.htm';
+}
+
+var bot='bot'+fid+'.htm';
+var title=did;
+
+if ( did=="chap1.htm" ) { title="Introduction"; }
+else if ( did=="chap2.htm" ) { title="A Case Study"; }
+else if ( did=="chap6.htm" ) { title="Conclusion"; }
+else if ( did=="chap3-0.htm" ) { title="Creational Patterns"; }
+else if ( did=="pat3a.htm" ) { title="Abstract Factory"; }
+else if ( did=="pat3b.htm" ) { title="Builder"; }
+else if ( did=="pat3c.htm" ) { title="Factory Method"; }
+else if ( did=="pat3d.htm" ) { title="Prototype"; }
+else if ( did=="pat3e.htm" ) { title="Singleton"; }
+else if ( did=="disc3.htm" ) { title="Discussion of Creational Patterns"; }
+else if ( did=="chap4-0.htm" ) { title="Structural Patterns"; }
+else if ( did=="pat4a.htm" ) { title="Adapter"; }
+else if ( did=="pat4b.htm" ) { title="Bridge"; }
+else if ( did=="pat4c.htm" ) { title="Composite"; }
+else if ( did=="pat4d.htm" ) { title="Decorator"; }
+else if ( did=="pat4e.htm" ) { title="Facade"; }
+else if ( did=="pat4f.htm" ) { title="Flyweight"; }
+else if ( did=="pat4g.htm" ) { title="Proxy"; }
+else if ( did=="disc4.htm" ) { title="Discussion of Structural Patterns"; }
+else if ( did=="chap5-0.htm" ) { title="Behavioral Patterns"; }
+else if ( did=="pat5a.htm" ) { title="Chain of Responsibility"; }
+else if ( did=="pat5b.htm" ) { title="Command"; }
+else if ( did=="pat5c.htm" ) { title="Interpreter"; }
+else if ( did=="pat5d.htm" ) { title="Iterator"; }
+else if ( did=="pat5e.htm" ) { title="Mediator"; }
+else if ( did=="pat5f.htm" ) { title="Memento"; }
+else if ( did=="pat5g.htm" ) { title="Observer"; }
+else if ( did=="pat5h.htm" ) { title="State"; }
+else if ( did=="pat5i.htm" ) { title="Strategy"; }
+else if ( did=="pat5j.htm" ) { title="Template Method"; }
+else if ( did=="pat5k.htm" ) { title="Visitor"; }
+else if ( did=="disc5.htm" ) { title="Discussion of Behavioral Patterns"; }
+else if ( did=="chapA-0.htm" ) { title="Glossary"; }
+else if ( did=="chapB-0.htm" ) { title="Guide to Notation"; }
+else if ( did=="chapC-0.htm" ) { title="Foundation Classes"; }
+else if ( did=="bib-0.htm" ) { title="Bibliography"; }
+else if ( did=="index-A.htm" ) { title="Index"; }
+else if ( did=="index-B.htm" ) { title="Index"; }
+else if ( did=="index-C.htm" ) { title="Index"; }
+else if ( did=="index-D.htm" ) { title="Index"; }
+else if ( did=="index-E.htm" ) { title="Index"; }
+else if ( did=="index-F.htm" ) { title="Index"; }
+else if ( did=="index-G.htm" ) { title="Index"; }
+else if ( did=="index-H.htm" ) { title="Index"; }
+else if ( did=="index-I.htm" ) { title="Index"; }
+else if ( did=="index-J.htm" ) { title="Index"; }
+else if ( did=="index-K.htm" ) { title="Index"; }
+else if ( did=="index-L.htm" ) { title="Index"; }
+else if ( did=="index-M.htm" ) { title="Index"; }
+else if ( did=="index-N.htm" ) { title="Index"; }
+else if ( did=="index-O.htm" ) { title="Index"; }
+else if ( did=="index-P.htm" ) { title="Index"; }
+else if ( did=="index-Q.htm" ) { title="Index"; }
+else if ( did=="index-R.htm" ) { title="Index"; }
+else if ( did=="index-S.htm" ) { title="Index"; }
+else if ( did=="index-T.htm" ) { title="Index"; }
+else if ( did=="index-U.htm" ) { title="Index"; }
+else if ( did=="index-V.htm" ) { title="Index"; }
+else if ( did=="index-W.htm" ) { title="Index"; }
+else if ( did=="index-X.htm" ) { title="Index"; }
+else if ( did=="index-Y.htm" ) { title="Index"; }
+else if ( did=="index-Z.htm" ) { title="Index"; }
+else if ( did=="preface.htm" ) { title="Preface to CD"; }
+else if ( did=="pref2.htm" ) { title="Preface to Book"; }
+else if ( did=="fore.htm" ) { title="Foreword"; }
+else if ( did=="guide.htm" ) { title="Guide to Readers"; }
+else if ( did=="contents.htm" ) { title="Table of Contents"; }
+
+document.write('<HTML><HEAD><TITLE>'+title+'</TITLE>');
+
+if(navigator.appName == "Netscape") {
+        self.name = "_mainDisplayFrame";
+        self._mainDisplayFrame = self;
+}
+
+function load(frame, chap, name, anchor) {
+  if (navigator.appName == "Netscape")
+    frame = "vfs.htm?doc=" + chap + "&fid=" + name + "&hid=" + anchor;
+  top.location.href = frame;
+}
+
+document.write('</HEAD>');
+document.write('<FRAMESET FRAMEBORDER=NO BORDER=0 MARGINWIDTH=1 MARGINHEIGHT=1 FRAMESPACING=NO COLS="105,*">');
+document.write('<FRAME SRC="'+left+'" MARGINWIDTH=1 MARGINHEIGHT=1 SCROLLING=NO NAME="LEFT">');
+document.write('<FRAMESET FRAMEBORDER=NO BORDER=0 MARGINWIDTH=1 MARGINHEIGHT=1 FRAMESPACING=NO ROWS="65,*,48">');
+document.write('<FRAME SRC="'+banner+'" MARGINWIDTH=1 MARGINHEIGHT=1 SCROLLING=NO>');
+document.write('<FRAME SRC="'+did+hash+'" NAME="TEXT">');
+document.write('<FRAME SRC="'+bot+'" MARGINWIDTH=1 MARGINHEIGHT=1 NAME="BOTTOM" SCROLLING=NO>');
+document.write('</FRAMESET></FRAMESET></HTML>');
+
+</SCRIPT>
+</HEAD>
+</HTML>
+                                                                                                    
